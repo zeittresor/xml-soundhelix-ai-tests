@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!-- SoundHelix-Konfigurationfile created using ChatGPT o1-Preview Model-->
+<SoundHelix version="0.8+" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <!-- Standard SongNameEngine einbinden -->
+    <xi:include href="../includes/Standard-SongNameEngine.xml" />
+
+    <!-- Strukturdefinition -->
+    <structure>
+        <bars>256</bars>
+        <beatsPerBar>4</beatsPerBar>
+        <ticksPerBeat>12</ticksPerBeat>
+        <maxVelocity>1000</maxVelocity>
+    </structure>
+
+    <!-- Harmonie-Engine -->
+    <harmonyEngine class="PatternHarmonyEngine">
+        <crossoverPitch>5</crossoverPitch>
+        <minimizeChordDistance>false</minimizeChordDistance>
+        <!-- Angepasste Akkordfolge -->
+        <chordPattern>F#m/2,D/2,E/2,F#m/2,F#m/2,D/2,E/2,F#m/8</chordPattern>
+    </harmonyEngine>
+
+    <!-- Arrangement-Engine -->
+    <arrangementEngine class="SimpleArrangementEngine">
+        <constraintMode>greedy</constraintMode>
+        <maxIterations>2500</maxIterations>
+        <minActivityCount>3</minActivityCount>
+        <maxActivityCount>5</maxActivityCount>
+        <maxActivityChangeCount>1</maxActivityChangeCount>
+        <startActivityCounts>3</startActivityCounts>
+        <stopActivityCounts>3</stopActivityCounts>
+
+        <!-- Aktivitätsvektoren -->
+        <activityVector name="bass">
+            <startAfterSection>0</startAfterSection>
+            <minActive>100</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+        <activityVector name="melody">
+            <startAfterSection>0</startAfterSection>
+            <minActive>100</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+        <activityVector name="chords">
+            <startAfterSection>0</startAfterSection>
+            <minActive>80</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+        <!-- Separate Aktivitätsvektoren für die Drums -->
+        <activityVector name="drums_kick">
+            <startAfterSection>0</startAfterSection>
+            <minActive>100</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+        <activityVector name="drums_snare">
+            <startAfterSection>0</startAfterSection>
+            <minActive>100</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+        <activityVector name="drums_hihat">
+            <startAfterSection>0</startAfterSection>
+            <minActive>100</minActive>
+            <minSegmentLength>8</minSegmentLength>
+        </activityVector>
+
+        <!-- Bass Track -->
+        <track>
+            <instrument>bass</instrument>
+            <transposition>-24</transposition>
+            <velocity>800</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="StringPatternEngine">
+                    <!-- Basslinie -->
+                    <string ticksPerBeat="4">0,-,2,-,4,-,2,-,0,-,2,-,4,-,2,-</string>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>bass</activityVector>
+        </track>
+
+        <!-- Melody Track -->
+        <track>
+            <instrument>melody</instrument>
+            <transposition>0</transposition>
+            <velocity>900</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">3,6,3,6,7,6,3,6,2,3,4,6,3,6,7,6</string>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>melody</activityVector>
+        </track>
+
+        <!-- Chords Track -->
+        <track>
+            <instrument>chords</instrument>
+            <transposition>0</transposition>
+            <velocity>700</velocity>
+            <sequenceEngine class="ChordSequenceEngine">
+                <patternEngine class="StringPatternEngine">
+                    <!-- Akkordpattern -->
+                    <string ticksPerBeat="4">0,-,0,-,0,-,0,-</string>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>chords</activityVector>
+        </track>
+
+        <!-- Drums Track -->
+        <track>
+            <instrument>drums</instrument>
+            <sequenceEngine class="DrumSequenceEngine">
+                <!-- Kick Drum -->
+                <pattern>
+                    <pitch>36</pitch>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0,-,-,-,0,-,-,-</string>
+                    </patternEngine>
+                </pattern>
+                <!-- Snare Drum -->
+                <pattern>
+                    <pitch>38</pitch>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">-,-,0,-,-,-,0,-</string>
+                    </patternEngine>
+                </pattern>
+                <!-- Closed Hi-Hat -->
+                <pattern>
+                    <pitch>42</pitch>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0,0,0,0,0,0,0,0</string>
+                    </patternEngine>
+                </pattern>
+            </sequenceEngine>
+            <!-- Zuweisung der Aktivitätsvektoren zu den Patterns -->
+            <activityVector>drums_kick</activityVector>
+            <activityVector>drums_snare</activityVector>
+            <activityVector>drums_hihat</activityVector>
+        </track>
+
+        <!-- Synth Pad Track -->
+        <track>
+            <instrument>pad</instrument>
+            <transposition>0</transposition>
+            <velocity>600</velocity>
+            <sequenceEngine class="PadSequenceEngine">
+                <offsets>0</offsets>
+            </sequenceEngine>
+            <activityVector>chords</activityVector>
+        </track>
+
+    </arrangementEngine>
+
+    <!-- Player-Konfiguration -->
+    <player class="MidiPlayer">
+        <bpm>116</bpm>
+        <transposition>60</transposition>
+        <beforePlayWaitTicks>16</beforePlayWaitTicks>
+        <afterPlayWaitTicks>16</afterPlayWaitTicks>
+        <groove>100</groove>
+        <!-- MIDI-Datei speichern -->
+        <midiFilename>midifiles/SoundHelix-New2_-_${safeSongName}.mid</midiFilename> <!-- Speichern als Midi Song -->
+        <device name="device1" clockSynchronization="true">
+            Gervill,Microsoft GS Wavetable Synth,Microsoft GS Wavetable SW Synth,Java Sound Synthesizer
+        </device>
+        <!-- Instrumenten-Mapping -->
+        <map instrument="bass" device="device1" channel="1" program="33"/> <!-- Fingered Bass -->
+        <map instrument="melody" device="device1" channel="2" program="81"/> <!-- Lead 1 (Square) -->
+        <map instrument="chords" device="device1" channel="3" program="88"/> <!-- Pad 1 (New Age) -->
+        <map instrument="drums" device="device1" channel="10"/>  <!-- Drums -->
+        <map instrument="pad" device="device1" channel="4" program="89"/> <!-- Pad 2 (Warm) -->
+    </player>
+</SoundHelix>
