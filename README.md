@@ -6,6 +6,6 @@ This is a new configuration file for SoundHelix (created only by some prompts us
 First of all you need some files to make this work.. 
 Make sure you have just downloaded a snapshot of the latest trunk from https://sourceforge.net/p/soundhelix/code/HEAD/tree/trunk/soundhelix/ 
 
-Put the files of this repository in the main folder of SoundHelix and click run.bat to create a new midi song (will be saved in .\examples\midifiles).
+Put the files of this repository in the main folder of SoundHelix and click run.bat to create a new midi song (will be saved in .\midifiles).
 
 More Infos about the SoundHelix project you can find here: https://www.soundhelix.com/
