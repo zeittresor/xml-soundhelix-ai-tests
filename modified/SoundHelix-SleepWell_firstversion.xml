@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SoundHelix xmlns:ns0="http://www.w3.org/2001/XInclude" version="0.5+">
+    <ns0:include href="../includes/Standard-SongNameEngine.xml"/>
+    <structure>
+        <bars>
+            <random min="96" max="160" step="16"/>
+        </bars>
+        <beatsPerBar>4</beatsPerBar>
+        <ticksPerBeat>4</ticksPerBeat>
+        <maxVelocity>127</maxVelocity>
+    </structure>
+    <harmonyEngine class="PatternHarmonyEngine">
+        <crossoverPitch>4</crossoverPitch>
+        <minimizeChordDistance>true</minimizeChordDistance>
+        <chordPattern>+Am/8,C/4,Am/4,Dm/4,Am/4,C/4,Am/4,Dm/4</chordPattern>
+        <chordPattern>+Am/8,F/8,G/8,F/8,+Am/8,Em/8,F/8,Em/8</chordPattern>
+        <chordPattern>+Em/8,C/4,G/4,Am/4,G/4,Em/4,Am/4,Em/4</chordPattern>
+        <chordPattern>+Dm/8,G/4,C/4,F/4,C/4,G/4,F/4,Dm/4</chordPattern>
+        <chordPattern>+C/8,G/4,Am/4,F/4,G/4,C/4,F/4,C/4</chordPattern>
+        <chordPattern>+Bm/8,Em/4,A/4,D/4,G/4,C/4,F/4,Bm/4</chordPattern>
+        <chordPattern>+G/8,D/4,Em/4,Bm/4,C/4,G/4,Am/4,D/4</chordPattern>
+    </harmonyEngine>
+    <arrangementEngine class="SimpleArrangementEngine">
+        <maxIterations>5000000</maxIterations>
+        <minActivityCount>3</minActivityCount>
+        <maxActivityCount>6</maxActivityCount>
+        <maxActivityChangeCount>3</maxActivityChangeCount>
+        <startActivityCounts>
+            <random list="3,4,5,6"/>
+        </startActivityCounts>
+        <stopActivityCounts>
+            <random list="3,4,5,6"/>
+        </stopActivityCounts>
+        <activityVector name="accomp"/>
+        <activityVector name="melody"/>
+        <activityVector name="bass"/>
+        <activityVector name="strings"/>
+        <activityVector name="harp"/>
+        <activityVector name="piano"/>
+        <activityVector name="flute"/>
+        <activityVector name="celesta"/>
+        <track>
+            <instrument>accomp</instrument>
+            <transposition>-12</transposition>
+            <velocity>100</velocity>
+            <sequenceEngine class="MultiPatternSequenceEngine">
+                <patternEngines>
+                    <patternEngine class="StringPatternEngine">
+                        <string>0/3,-/5</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string>-/2,2/3,-/3</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string>-/4,3/3,-/1</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string>0/2,7/2,-/2,7/2</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string>-/2,5/2,0/2,7/2</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string>0/1,7/1,5/2,7/4</string>
+                    </patternEngine>
+                </patternEngines>
+            </sequenceEngine>
+            <activityVector>accomp</activityVector>
+        </track>
+        <track>
+            <instrument>melody</instrument>
+            <transposition>0</transposition>
+            <velocity>100</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="RandomFragmentPatternEngine">
+                    <patternTicks>8</patternTicks>
+                    <patternString>A1,B1,A2,B2,A3,B3,A4,B4,A5,B5,A6,B6</patternString>
+                    <pattern group="A">7,-,9,-,7,2,4,-|7,-,9,-,5,4,4,-|7,3,9,3,7,-,5,7|9,-,7,-,5,-,4,-|7,-,5,-,9,-,4,-|9,-,7,-,4,-,5,-</pattern>
+                    <pattern group="B">5,-,7,-,4,-,2,-|5,-,7,-,4,-,0,-|7,-,5,-,4,-,2,-|4,-,5,-,2,-,0,-|5,-,4,-,2,-,0,-|2,-,4,-,7,-,5,-</pattern>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>melody</activityVector>
+        </track>
+        <track>
+            <instrument>bass</instrument>
+            <transposition>-24</transposition>
+            <velocity>100</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="RandomFragmentPatternEngine">
+                    <patternTicks>8</patternTicks>
+                    <patternString>A1,A1,A1,B1,A1,A1,A1,B2</patternString>
+                    <pattern group="A">0,-,-,-,-,-,-,-</pattern>
+                    <pattern group="B">0,-,-,-,-,-,2,-|0,-,-,-,-,-,3,-|0,-,-,-,-,-,-1,-</pattern>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>bass</activityVector>
+        </track>
+        <track>
+            <instrument>stringsPad</instrument>
+            <transposition>0</transposition>
+            <velocity>100</velocity>
+            <sequenceEngine class="MultiPatternSequenceEngine">
+                <patternEngines>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/8</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,7/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,12/4</string>
+                    </patternEngine>
+                </patternEngines>
+            </sequenceEngine>
+            <activityVector>strings</activityVector>
+        </track>
+        <track>
+            <instrument>harp</instrument>
+            <transposition>0</transposition>
+            <velocity>90</velocity>
+            <sequenceEngine class="MultiPatternSequenceEngine">
+                <patternEngines>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/8</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,7/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/2,-/2,7/2,5/2</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,-/4,7/4,-/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,9/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/2,7/2,-/2,9/2</string>
+                    </patternEngine>
+                </patternEngines>
+            </sequenceEngine>
+            <activityVector>harp</activityVector>
+        </track>
+        <track>
+            <instrument>piano</instrument>
+            <transposition>0</transposition>
+            <velocity>90</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="RandomPatternEngine">
+                    <patternTicks>16</patternTicks>
+                    <ticksPerBeat>4</ticksPerBeat>
+                    <patternString>A1,A1,A1,A1</patternString>
+                    <offsets>0,2,3,5,7,10,12</offsets>
+                    <noteLengths>1,2,2,3,4</noteLengths>
+                    <pauseLengths>1,1,2</pauseLengths>
+                    <noteProbability>60</noteProbability>
+                    <legatoProbability>10</legatoProbability>
+                    <minVelocity>80</minVelocity>
+                    <maxVelocity>110</maxVelocity>
+                    <minActiveTicks>1</minActiveTicks>
+                    <maxActiveTicks>8</maxActiveTicks>
+                    <uniquePatternParts>false</uniquePatternParts>
+                    <pitchVelocityCorrelation>75</pitchVelocityCorrelation>
+                    <velocityExponent>3.0</velocityExponent>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>piano</activityVector>
+        </track>
+        <track>
+            <instrument>flute</instrument>
+            <transposition>0</transposition>
+            <velocity>85</velocity>
+            <sequenceEngine class="PatternSequenceEngine">
+                <patternEngine class="RandomPatternEngine">
+                    <patternTicks>16</patternTicks>
+                    <ticksPerBeat>4</ticksPerBeat>
+                    <patternString>A1,A1,A1,A1</patternString>
+                    <offsets>0,2,4,5,7,9,12</offsets>
+                    <noteLengths>2,3,4</noteLengths>
+                    <pauseLengths>1,2</pauseLengths>
+                    <noteProbability>50</noteProbability>
+                    <legatoProbability>20</legatoProbability>
+                    <minVelocity>70</minVelocity>
+                    <maxVelocity>100</maxVelocity>
+                    <minActiveTicks>1</minActiveTicks>
+                    <maxActiveTicks>8</maxActiveTicks>
+                    <uniquePatternParts>false</uniquePatternParts>
+                    <pitchVelocityCorrelation>75</pitchVelocityCorrelation>
+                    <velocityExponent>3.0</velocityExponent>
+                </patternEngine>
+            </sequenceEngine>
+            <activityVector>flute</activityVector>
+        </track>
+        <track>
+            <instrument>celesta</instrument>
+            <transposition>0</transposition>
+            <velocity>80</velocity>
+            <sequenceEngine class="MultiPatternSequenceEngine">
+                <patternEngines>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,7/4,12/4,7/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/2,-/2,7/2,9/2</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/4,5/4,7/4,5/4</string>
+                    </patternEngine>
+                    <patternEngine class="StringPatternEngine">
+                        <string ticksPerBeat="4">0/2,12/2,7/2,12/2</string>
+                    </patternEngine>
+                </patternEngines>
+            </sequenceEngine>
+            <activityVector>celesta</activityVector>
+        </track>
+    </arrangementEngine>
+    <player class="MidiPlayer">
+        <bpm>
+            <random min="60" max="80" type="normal" variance="5"/>
+        </bpm>
+        <transposition>
+            <random min="60" max="72"/>
+        </transposition>
+        <beforePlayWaitTicks>16</beforePlayWaitTicks>
+        <afterPlayWaitTicks>16</afterPlayWaitTicks>
+        <groove>
+            <random list="100|110,90|120,80|115,85"/>
+        </groove>
+		<midiFilename>midifiles/SoundHelix-SleepWell_-_${safeSongName}.mid</midiFilename>
+        <device name="device1" clockSynchronization="true">Gervill,Microsoft GS Wavetable Synth,Microsoft GS Wavetable SW Synth,Java Sound Synthesizer</device>
+        <map instrument="accomp" device="device1" channel="2" program="25"/>
+        <map instrument="melody" device="device1" channel="3" program="25"/>
+        <map instrument="bass" device="device1" channel="4" program="33"/>
+        <map instrument="stringsPad" device="device1" channel="5" program="50"/>
+        <map instrument="harp" device="device1" channel="6" program="46"/>
+        <map instrument="piano" device="device1" channel="7" program="0"/>
+        <map instrument="flute" device="device1" channel="8" program="73"/>
+        <map instrument="celesta" device="device1" channel="9" program="8"/>
+        <controllerValue device="device1" channel="2" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="3" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="4" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="5" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="6" controller="72">100</controllerValue>
+        <controllerValue device="device1" channel="7" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="6" controller="91">100</controllerValue>
+        <controllerValue device="device1" channel="8" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="8" controller="91">80</controllerValue>
+        <controllerValue device="device1" channel="9" controller="72">80</controllerValue>
+        <controllerValue device="device1" channel="9" controller="91">80</controllerValue>
+    </player>
+</SoundHelix>
