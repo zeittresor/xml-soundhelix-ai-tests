@@ -1,0 +1,3 @@
+<!-- This file is just to make sure that in github is not showing 100% batch language because that is wrong.
+The relevant main file are the .xml config files unter ./examples NOT the batch file in the root. :-) -->
+
